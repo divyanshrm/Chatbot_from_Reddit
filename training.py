@@ -165,8 +165,8 @@ def main():
                     y.append(out_seq)
                     n+=1
                 # yield the batch data
-                    if n==(batch*1):
-                        ran =random.sample(range(batch), int(batch/10))
+                    if n==(batch*10):
+                        ran =random.sample(range(batch), int(batch))
                         n=0
                         yield [array(X1)[ran], pad_sequences(X2, maxlen=16,padding='post')[ran]], array(y)[ran]
                         
@@ -178,7 +178,7 @@ def main():
     # In[143]:
 
 
-    generator =data_generator(decoder_input, encoder_input, tokenizer, 16,1280)
+    generator =data_generator(decoder_input, encoder_input, tokenizer, 16,128)
     validation_gen=data_generator(decoder_input_test, encoder_input_test, tokenizer, 16,1280)
 
 
